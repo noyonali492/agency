@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dashboarController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,13 +15,16 @@ use App\Http\Controllers\dashboarController;
 */
 
 Route::get('/', function () {
-    return view('fontend.layouts.index');
+    return view('admin.home');
 });
 
-//dashboard Start
-Route::get('/mydashboard', [dashboarController::class, 'mydashboard'])->name('mydashboard');
-Route::get('/form', [dashboarController::class, 'form']);
-Route::get('/register', [dashboarController::class, 'register']);
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//dashboard Start
+Route::get('/mydashboard', [DashboardController::class, 'mydashboard'])->name('mydashboard');
+Route::get('/form', [DashboardController::class, 'form']);
+Route::get('/register', [DashboardController::class, 'register']);
+
+
+
+Route::get('/contact', [AdminController::class, 'contact']);
